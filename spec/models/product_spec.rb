@@ -9,6 +9,5 @@ RSpec.describe Product, type: :model do
     it { should validate_presence_of(:date) }
     it { should validate_presence_of(:product_id) }
     it { should validate_presence_of(:weight) }
-    it { should validate_presence_of(:unit) }
   end
 end

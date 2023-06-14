@@ -10,12 +10,24 @@ class Import < ApplicationRecord
     CSV.parse(csv_file, headers: true) do |row|
       product_id = row[1]
       category = product_id[0..2]
+      weight = row[2]
+      unit = row[3]
+      case unit
+      when 'kilograms'
+        weight_kg = weight
+      when 'pounds'
+        weight_kg = weight * 0.45359237
+      when 'grams'
+        weight_kg = weight * 0.001
+      else
+        next  # Ignorar unidades desconhecidas
+      end
+
       
       product = products.build(
         date: row[0],
         product_id: product_id,
-        weight: row[2],
-        unit: row[3],
+        weight: weight_kg,
         category: category
       )
       

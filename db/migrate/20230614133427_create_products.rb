@@ -6,7 +6,6 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :category
       t.string :product_id
       t.string :weight
-      t.string :unit
 
       t.timestamps
     end
